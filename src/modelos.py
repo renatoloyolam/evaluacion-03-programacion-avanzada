@@ -125,6 +125,8 @@ class LineaCocina:
     ingrediente: str
     envases: int                # envases completos que hay que usar
     unidad_compra: str          # 'paquete', 'kg', 'litro', 'unidad', 'empaque'
+    cantidad_preparar: int      # cantidad exacta de la receta para este servicio (ej: 6 unidades de papa)
+    unidad_receta: str          # 'unidades' o 'porciones'
 
 
 @dataclass(frozen=True)
@@ -177,6 +179,8 @@ class ResultadoOrden:
                 ingrediente=l.ingrediente.nombre,
                 envases=l.envases,
                 unidad_compra=l.ingrediente.unidad_compra,
+                cantidad_preparar=l.cantidad_preparar,
+                unidad_receta=l.unidad_receta,
             )
             for l in self.lineas
         ]

@@ -208,4 +208,12 @@ def test_cocina_no_recibe_campos_de_dinero():
     o = calcular_orden(POR_NOMBRE["Arroz con Pollo y Ensalada"], 10)
     for l in o.vista_cocina():
         campos = set(vars(l))
-        assert campos == {"ingrediente", "envases", "unidad_compra"}
+        assert campos == {"ingrediente", "envases", "unidad_compra", "cantidad_preparar", "unidad_receta"}
+
+
+def test_texto_cantidad_receta():
+    from src.calculo import texto_cantidad_receta
+    assert texto_cantidad_receta(6, "unidades") == "6 unidades"
+    assert texto_cantidad_receta(1, "unidades") == "1 unidad"
+    assert texto_cantidad_receta(4, "porciones") == "4 porciones"
+    assert texto_cantidad_receta(1, "porciones") == "1 porción"

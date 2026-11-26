@@ -11,6 +11,9 @@
 # scripts/generar_sql.py) y también los tests, así los datos son los mismos
 # en todos lados y no hay que copiarlos a mano.
 #
+# Instrucción verbal del profesor: la "Utilidad" de la Cebolla es para 4 personas
+# (la tabla impresa del enunciado dice "2 personas"). Se usa 4.
+#
 # Observaciones sobre el enunciado (las dejé como vienen, sin "arreglarlas"):
 #   - La tabla dice "Tuto de pollo": lo escribí como "Trutro de pollo".
 #   - "Carne Molida con Papas y Arroz" en la lista de ingredientes NO lleva arroz.

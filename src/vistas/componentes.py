@@ -16,7 +16,7 @@ import streamlit as st
 
 from src.busqueda import buscar_por_texto
 from src.calculo import (
-    formato_clp, redondear, texto_envases, validar_comensales, validar_menu,
+    formato_clp, redondear, texto_cantidad_receta, texto_envases, validar_comensales, validar_menu,
 )
 
 
@@ -78,6 +78,7 @@ def tabla_cocina(resultado):
     for l in resultado.vista_cocina():
         filas.append({
             "Ingrediente": l.ingrediente,
+            "Cantidad a preparar": texto_cantidad_receta(l.cantidad_preparar, l.unidad_receta),
             "Cantidad requerida": texto_envases(l.envases, l.unidad_compra),
         })
     st.dataframe(pd.DataFrame(filas), hide_index=True)

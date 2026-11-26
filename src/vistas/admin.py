@@ -28,7 +28,7 @@ from src.base_datos import ErrorBaseDatos
 from src.busqueda import filtrar_secuencial
 from src.config import TAM_BLOQUE_EXTERNO
 from src.ordenamiento import ALGORITMOS_INTERNOS, ordenar
-from src.calculo import formato_clp, texto_envases
+from src.calculo import formato_clp, texto_cantidad_receta, texto_envases
 from src.servicios import registrar_orden
 from src.vistas.componentes import formatear_fechas, formulario_servicio, mostrar_orden_admin
 
@@ -192,6 +192,7 @@ def _tab_historial(ordenes, detalle, recetas):
         lineas = filtrar_secuencial(detalle, lambda d: d["orden_id"] == elegida)
         det = pd.DataFrame({
             "Ingrediente": [d["ingrediente"] for d in lineas],
+            "Cantidad a preparar": [texto_cantidad_receta(d["cantidad_preparar"], d["unidad_receta"]) for d in lineas],
             "Cantidad requerida": [texto_envases(d["envases_requeridos"], d["unidad_compra"]) for d in lineas],
             "Costo envases ($)": [d["costo_envases"] for d in lineas],
             "Merma (envase)": [d["merma_envases"] for d in lineas],

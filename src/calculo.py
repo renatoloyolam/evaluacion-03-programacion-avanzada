@@ -250,6 +250,12 @@ def texto_envases(cantidad, unidad_compra):
     return f"{cantidad} {singular if cantidad == 1 else plural}"
 
 
+def texto_cantidad_receta(cantidad, unidad_receta):
+    """Ej: (6, 'unidades') -> '6 unidades'; (1, 'unidades') -> '1 unidad'; (1, 'porciones') -> '1 porción'."""
+    singular = {"unidades": "unidad", "porciones": "porción"}.get(unidad_receta, unidad_receta)
+    return f"{cantidad} {singular if cantidad == 1 else unidad_receta}"
+
+
 def formato_clp(valor, decimales=0):
     """Formato de pesos chilenos: 1234567.5 -> '$1.234.568' (punto como separador de miles)."""
     numero = redondear(valor, decimales)
